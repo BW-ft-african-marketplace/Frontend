@@ -1,10 +1,13 @@
 nav {
     border: 1px solid black;
+    z-index: 100;
+    
   }
   
   .homeNav {
     display: flex;
     justify-content: space-around;
+    
   }
   
   .mainHome {
@@ -13,13 +16,15 @@ nav {
     justify-content: center;
     align-content: center;
     text-align: center;
-    height: 95vh;
+    height: 98vh;
     
   }
   
   .bgImage{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.3)) , url('https://cdn.stocksnap.io/img-thumbs/960w/fresh-fruit_UW8AKAGQI3.jpg');
-  }
+    background-image: linear-gradient(rgba(0, 0, 0, 0.38),rgba(0, 0, 0, 0.38)) , url('https://cdn.stocksnap.io/img-thumbs/960w/fresh-fruit_UW8AKAGQI3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
   
   h1 {
     width: 100%;
@@ -28,7 +33,25 @@ nav {
   }
   
   .homeButtons {
-    width: 18%;
+    width: 45%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+  }
+
+  .homeButtons button {
+      width: 20%;
+      height: 5vh;
+      font-size: 1.15 rem;
+      font-weight: bold;
+      border-radius: 10px;
+      background: #e76f51;
+      color: white;
+      border: none;
+      outline: none;
+      margin-right: 30px;
+  }
+
+  .homeButtons button:hover {
+      background: white;
+      color: black;
   }
