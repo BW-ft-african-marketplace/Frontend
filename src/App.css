@@ -2,30 +2,3 @@
   text-align: center;
 }
 
-nav {
-  border: 1px solid black;
-}
-
-.homeNav {
-  display: flex;
-  justify-content: space-around;
-}
-
-.mainHome {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
-  height: 95vh;
-}
-
-h1 {
-  width: 100%;
-}
-
-.homeButtons {
-  width: 18%;
-  display: flex;
-  justify-content: space-between;
-}

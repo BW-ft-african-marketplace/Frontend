@@ -1,0 +1,34 @@
+nav {
+    border: 1px solid black;
+  }
+  
+  .homeNav {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .mainHome {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    height: 95vh;
+    
+  }
+  
+  .bgImage{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.3)) , url('https://cdn.stocksnap.io/img-thumbs/960w/fresh-fruit_UW8AKAGQI3.jpg');
+  }
+  
+  h1 {
+    width: 100%;
+    font-size: 3.5rem;
+    color: white;
+  }
+  
+  .homeButtons {
+    width: 18%;
+    display: flex;
+    justify-content: space-between;
+  }
