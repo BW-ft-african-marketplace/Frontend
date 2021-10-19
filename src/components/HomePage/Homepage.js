@@ -6,10 +6,10 @@ function Homepage() {
       <header>
       <nav>
         <ul className='homeNav'>
-          <a>Home</a>
+          <a href="/home">Home</a>
           <a>About Us</a>
-          <a>Sign Up</a>
-          <a>Log In</a>
+          <a href="/signup">Sign Up</a>
+          <a href="/login">Log In</a>
         </ul>
       </nav>
       </header>
