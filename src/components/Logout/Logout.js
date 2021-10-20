@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 
-const LogoutPage = (props) => {
+const Logout = (props) => {
 	// There is no endpoint for logout at this time. 
 	// For now this component will delete the token from localStorage, 
 	// and redirect to homepage.
@@ -21,4 +21,4 @@ const LogoutPage = (props) => {
 	return (<div></div>);
 }
 
-export default LogoutPage;
+export default Logout;
