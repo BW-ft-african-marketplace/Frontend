@@ -1,21 +1,14 @@
 import React, { useEffect } from 'react';
-import axiosWithAuth from '../../utils/axiosWithAuth';
+import { Redirect } from 'react-router-dom';
 
 const Logout = (props) => {
-	// There is no endpoint for logout at this time. 
-	// For now this component will delete the token from localStorage, 
-	// and redirect to homepage.
+	// This component deletes the token and username from localStorage, 
+	// and redirects to homepage.
 	useEffect(() => {
-		axiosWithAuth()
-			.post('/logout')
-			.then(response => {
-				localStorage.removeItem("token");
+		localStorage.removeItem("token");
+		localStorage.removeItem("username");
 
-				props.history.push('/home');
-			})
-			.catch(error => {
-				console.log(error);
-			})
+		<Redirect to="/home"/>;
 	}, []);
 
 	return (<div></div>);
