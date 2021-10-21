@@ -2,7 +2,7 @@ import React , { useState } from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
 import { useHistory} from 'react-router';
-
+import './LogInPage.css'
 import LogInSchema from '../../validation/LogInSchema';
 import '../FormStyle.css';
 
@@ -47,9 +47,12 @@ const LogInPage = (props) => {
     }
 
     return(
+        <div className="loginContainer">
+        
         <div className="login">
+        <button className = 'backLogButton' onClick = { () => history.push('/home')}> Back </button>
             <div className="form">
-                <h1>Enter Site</h1>
+                <h1>Welcome Back!</h1>
 
                 <form onSubmit={submit}>
                     <label htmlFor="username"> Username </label>
@@ -76,6 +79,8 @@ const LogInPage = (props) => {
                     errorsValues.empty ? <p id="error">{errorsValues.empty}</p> :  <p id="error" />
                 }
             </div>
+        </div>
+        <div className="loginImage"></div>
         </div>
     )
 };

@@ -1,3 +1,9 @@
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
 nav {
     border: 1px solid black;
     z-index: 100;
@@ -26,7 +32,7 @@ nav {
     background-size: cover;
     }
   
-  h1 {
+  .mainHome h1 {
     width: 100%;
     font-size: 3.5rem;
     color: white;

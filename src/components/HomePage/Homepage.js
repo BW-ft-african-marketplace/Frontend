@@ -1,6 +1,10 @@
 import './Homepage.css';
+import { useHistory } from 'react-router-dom';
+
 
 function Homepage() {
+  const history = useHistory();
+
   return (
     <div className="App">
       <header>
@@ -17,14 +21,13 @@ function Homepage() {
       <div className='mainHome'>
         <h1>African Market Place</h1>
         <div className='homeButtons'>
-          <button>Sign up</button>
-          <button>Log In</button>
+          <button onClick = { () => history.push('/signup')}>Sign up</button>
+          <button onClick = { () => history.push('/login')}>Log In</button>
         </div>
       </div>
       </div>
-      
-     
     </div>
+    
   );
 }
 

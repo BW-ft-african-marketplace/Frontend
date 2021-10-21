@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import axios from 'axios';
 import * as yup from 'yup';
+import './SignUpPage.css'
 
 import SignUpSchema from "../../validation/SignUpSchema";
 
@@ -57,7 +58,11 @@ const SignupPage = (props) => {
     }, [formValues]);
 
     return (
+        <div className='parentContainer'>
+        <div className='sideImage'>
+        </div>
         <div className="signup">
+            <button className = 'backButton' onClick = { () => history.push('/home')}> Back </button>
             
             <div className="form">
                 <h1>Create New Account</h1>
@@ -103,6 +108,8 @@ const SignupPage = (props) => {
                     <button className="signup-button" disabled={disabled}> Create Account! </button>
                 </form>
             </div>
+        </div>
+        
         </div>
     )
 }
