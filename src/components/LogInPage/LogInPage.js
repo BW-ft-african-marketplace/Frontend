@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { useHistory} from 'react-router';
 import { connect } from 'react-redux';
 
-import { setUser } from '../../actions/UserActions';
+import { setUser, setToken } from '../../actions/UserActions';
 import schema from '../../validation/LogInSchema';
 
 //INITIAL VALUES LOCATION
@@ -45,8 +45,9 @@ const LogInPage = (props) => {
             console.log(formValues);
             axios.post('https://web46unit4buildweek.herokuapp.com/api/auth/login', formValues)
                 .then( (res) => {
-                    setUser(res.data);
-                    localStorage.setItem("token", res.data.token);
+                    props.setUser(res.data);
+
+                    props.setToken(res.data.token);
                     history.push('/market');
                 })
                 .catch( (err) => {
@@ -91,8 +92,8 @@ const LogInPage = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        ...state,
+        ...state
     };
 };
 
-export default connect(mapStateToProps, { setUser })(LogInPage);
+export default connect(mapStateToProps, { setUser, setToken })(LogInPage);

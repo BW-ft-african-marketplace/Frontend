@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { connect } from 'react-redux';
 
-const axiosWithAuth = () => {
-	const token = localStorage.getItem("token");
+const axiosWithAuth = (props) => {
+	const token = props.token;
 
 	return (
 		axios.create({
@@ -12,4 +13,10 @@ const axiosWithAuth = () => {
 	}));
 }
 
-export default axiosWithAuth;
+const mapStateToProps = state => {
+	return ({
+		token: state.token
+	})
+}
+
+export default connect(mapStateToProps)(axiosWithAuth);

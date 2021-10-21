@@ -1,20 +1,19 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { connect } from "react-redux";
 
-const UserGreeting = () => {
-	const { id } = useParams();
 
-	// Need to:
-	// get user info from store: based on id, or based on info saved in store
-	// Display greeting to 'username'
-	// display market page
-	// maybe put this component in the market page component
-
+const UserGreeting = (props) => {
 	return (
 		<div>
-			<h1>Welcome to User Page</h1> 
+			<h1>Hello, {props.username}</h1> 
 		</div>
 	)
 };
 
-export default UserGreeting;
+const mapStateToProps = state => {
+	return {
+		username: state.user.username
+	}
+}
+
+export default connect(mapStateToProps)(UserGreeting);

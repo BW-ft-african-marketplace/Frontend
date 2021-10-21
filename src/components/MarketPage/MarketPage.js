@@ -1,11 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import UserGreeting from './../Users/UserGreeting'
 
-const MarketPage = () => {
+const MarketPage = (props) => {
+	const { market_name } = props;
+
+	fetchMarketInfo(market_id);
+
 	return (
-		<h1>
-			Welcome to Market Page
-		</h1>
+		<div>
+			<UserGreeting />
+			<h2>Welcome to Market Page</h2>
+		</div>
 	)
 };
 
-export default MarketPage;
+const mapStateToProps = state => {
+	return ({
+		market_name: state.user.market_name
+	})
+}
+
+export default connect(mapStateToProps)(MarketPage);
