@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#@$!%*?&-])[A-Za-z\d@#$!%*?&-]{8,}$/;
 
-const SignUpSchema = yup.object().shape({
+const formSchema = yup.object().shape({
     username: yup
         .string()
         .trim()
@@ -15,11 +15,11 @@ const SignUpSchema = yup.object().shape({
     market_name: yup
         .string()
         .trim()
-        .required("Please Enter an Market Name")
-        .min(3, "Market Name Must Have at Least 3 Chracters in Length"),
+        .required("Please Enter a Market Name")
+        .min(3, "Market Name Must Be at Least 3 Characters in Length"),
     tos: yup
         .boolean()
-        .oneOf([true], "You must accept the Terms of Service")
+        .oneOf([true], "You must accept the Terms of Service"),
 });
 
-export default SignUpSchema;
+export default formSchema;

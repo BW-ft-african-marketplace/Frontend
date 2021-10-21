@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-const LogInSchema = yup.object().shape({
+const formSchema = yup.object().shape({
     username: yup
         .string()
         .trim()
@@ -11,4 +11,4 @@ const LogInSchema = yup.object().shape({
         .required("You must enter ypur password")
 });
 
-export default LogInSchema;
+export default formSchema;

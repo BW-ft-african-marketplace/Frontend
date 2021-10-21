@@ -3,13 +3,13 @@ import { useHistory } from "react-router";
 import axios from 'axios';
 import * as yup from 'yup';
 
-import SignUpSchema from "../../validation/SignUpSchema";
+import schema from "../../validation/SignUpSchema";
 
 const initialFormValues = {
     username: "",
     password: "",
     market_name: "",
-    tos: false
+    tos: false,
 }
 
 const initialFormErrors = {
@@ -19,19 +19,19 @@ const initialFormErrors = {
     tos: ""
 }
 
-const initialDisable = true;
+const initialDisabled = false;
 const initialCreateError = "";
 
 const SignupPage = (props) => {
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
-    const [disabled, setDisabled] = useState(initialDisable);
+    const [disabled, setDisabled] = useState(initialDisabled);
     const [createError, setCreateError] = useState(initialCreateError);
     
     const history = useHistory();
     const validate = (name, value) => {
         yup
-            .reach(SignupPage, name)
+            .reach(schema, name)
             .validate(value)
             .then(() => setFormErrors({...formErrors, [name]: ""}))
             .catch((err) => setFormErrors({...formErrors, [name]: err.errors[0]}));
@@ -39,7 +39,7 @@ const SignupPage = (props) => {
     };
     const handleChanges = (e) => {
         const {name, value, checked, type} = e.target;
-        const valueToUse = type === 'checkbox' ? checked: value;
+        const valueToUse = type === "checkbox" ? checked : value;
         validate(name, valueToUse);
         setFormValues({
             ...formValues,
@@ -49,11 +49,19 @@ const SignupPage = (props) => {
     const submit = (e) => {
         e.preventDefault();
         console.log(formValues);
+
+        axios.post('https://web46unit4buildweek.herokuapp.com/api/auth/register', formValues)
+            .then( (res) => {
+                history.push('/login');
+            })
+            .catch( (err) => {
+                setCreateError(err.response.data.message);
+            })
     }
 
     useEffect(() => {
-        SignUpSchema.isValid(formValues)
-        .then((valid) => setDisabled(valid));
+        schema.isValid(formValues)
+        .then((valid) => setDisabled(!valid));
     }, [formValues]);
 
     return (
@@ -100,7 +108,7 @@ const SignupPage = (props) => {
                         onChange={handleChanges}
                     />
                     <p className="warning">{formErrors.tos}</p>
-                    <button className="signup-button" disabled={disabled}> Create Account! </button>
+                    <button className="signup-button" disabled={disabled}>Create Account!</button>
                 </form>
             </div>
         </div>
