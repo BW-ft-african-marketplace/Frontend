@@ -5,7 +5,7 @@ import './App.css';
 import Homepage from './components/HomePage/Homepage';
 import SignupPage from './components/SignUpPage/SignUpPage';
 import LogInPage from './components/LogInPage/LogInPage';
-import UserPage from './components/Users/UserPage';
+import UserGreeting from './components/Users/UserGreeting';
 import Logout from './components/Logout/Logout';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -17,7 +17,7 @@ function App() {
         <Route exact path="/home" component={Homepage} />
         <Route path="/signup" component={SignupPage} />
         <Route path="/login" component={LogInPage} />
-				<PrivateRoute exact path="/users/:id" component={UserPage} />
+				<PrivateRoute exact path="/users/:id" component={UserGreeting} />
         <PrivateRoute exact path="/logout" component={Logout} />
         <Route path="/">
           <Redirect to="/home" />
