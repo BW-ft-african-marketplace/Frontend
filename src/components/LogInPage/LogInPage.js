@@ -47,7 +47,7 @@ const LogInPage = (props) => {
                 .then( (res) => {
                     setUser(res.data);
                     localStorage.setItem("token", res.data.token);
-                    history.push('/UserGreetingHOLDER');
+                    history.push('/market');
                 })
                 .catch( (err) => {
                     console.log(err);
