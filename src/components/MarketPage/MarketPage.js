@@ -1,11 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import UserGreeting from './../Users/UserGreeting'
 
 const MarketPage = (props) => {
-	const { market_name } = props;
+	// const { market_name } = props;
 
-	fetchMarketInfo(market_id);
+	// fetchMarketInfo(market_name);
 
 	return (
 		<div>
@@ -15,10 +15,11 @@ const MarketPage = (props) => {
 	)
 };
 
-const mapStateToProps = state => {
-	return ({
-		market_name: state.user.market_name
-	})
-}
+// const mapStateToProps = state => {
+// 	return ({
+// 		...state
+// 	})
+// }
 
-export default connect(mapStateToProps)(MarketPage);
+export default /* connect(mapStateToProps) */ 
+MarketPage;

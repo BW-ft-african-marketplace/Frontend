@@ -4,7 +4,8 @@ import * as yup from 'yup';
 import { useHistory} from 'react-router';
 import { connect } from 'react-redux';
 
-import { setUser, setToken } from '../../actions/UserActions';
+import { setUser } from '../../actions/UserActions';
+import { setToken } from '../../actions/actions';
 import schema from '../../validation/LogInSchema';
 
 //INITIAL VALUES LOCATION
@@ -30,12 +31,14 @@ const LogInPage = (props) => {
             .validate(value)
             .then(() => setErrorsValues({ ...errorsValues, [name]: ""}))
             .catch((err) => setErrorsValues({...errorsValues, [name]: err.errors[0]}))
-    }
+    };
+
     const handleChange = (e) => {
         const {name, value} = e.target;
         validate(name, value);
         setFormValues({...formValues, [name]: value});
-    }
+    };
+
     const submit = (e) => {
         e.preventDefault();
 
@@ -45,16 +48,36 @@ const LogInPage = (props) => {
             console.log(formValues);
             axios.post('https://web46unit4buildweek.herokuapp.com/api/auth/login', formValues)
                 .then( (res) => {
-                    props.setUser(res.data);
+										// console.log("response in axios call in submit handler in login page: ", res);
+										console.log("res.data.message: ", res.data.message);
 
+										// // strip off the first 9 characters to remove "Welcome, "
+										// // 
+
+										// const messageString = "{" + res.data.message.toLowerCase() + "}";
+
+										// console.log("messageString: ", messageString);
+
+										// console.log("JSON.parse(): ", JSON.parse(messageString));
+
+
+										// returned string is res.data.message
+										// username is formValues.username
+										// user_id: use regex, number after "ID: " and before ","
+										// market_id: use regex, number after "Market_Id: " until end of string
+										
+                    props.setUser(res.data);
                     props.setToken(res.data.token);
-                    history.push('/market');
+										
+										// console.log("history: ", history);
+                    
+										history.push('/market');
                 })
                 .catch( (err) => {
                     console.log(err);
                 })
         }  
-    }
+    };
 
     return(
         <div className="login">
