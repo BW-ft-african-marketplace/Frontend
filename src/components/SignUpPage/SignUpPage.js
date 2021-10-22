@@ -37,15 +37,18 @@ const SignupPage = (props) => {
             .catch((err) => setFormErrors({...formErrors, [name]: err.errors[0]}));
 
     };
+
     const handleChanges = (e) => {
         const {name, value, checked, type} = e.target;
         const valueToUse = type === "checkbox" ? checked : value;
         validate(name, valueToUse);
         setFormValues({
             ...formValues,
-            [name]: value
+            [name]: valueToUse
         })
     };
+   
+
     const submit = (e) => {
         e.preventDefault();
         console.log(formValues);
@@ -57,11 +60,13 @@ const SignupPage = (props) => {
             .catch( (err) => {
                 setCreateError(err.response.data.message);
             })
-    }
+    };
 
     useEffect(() => {
         schema.isValid(formValues)
-        .then((valid) => setDisabled(!valid));
+        .then((valid) => {
+            setDisabled(!valid);
+        });
     }, [formValues]);
 
     return (

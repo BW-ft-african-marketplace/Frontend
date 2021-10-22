@@ -17,9 +17,8 @@ const formSchema = yup.object().shape({
         .trim()
         .required("Please Enter a Market Name")
         .min(3, "Market Name Must Be at Least 3 Characters in Length"),
-    tos: yup
-        .boolean()
-        .oneOf([true], "You must accept the Terms of Service"),
+    tos: yup.boolean().oneOf([true] , "You must accept our Terms of Service")
+
 });
 
 export default formSchema;
