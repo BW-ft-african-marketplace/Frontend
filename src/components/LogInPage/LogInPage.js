@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 
 import { setUser } from '../../actions/UserActions';
 import schema from '../../validation/LogInSchema';
+import '../FormStyle.css';
+
 
 //INITIAL VALUES LOCATION
 const initialValue = {
@@ -58,6 +60,8 @@ const LogInPage = (props) => {
     return(
         <div className="login">
             <div className="form">
+                <h1>Enter Site</h1>
+
                 <form onSubmit={submit}>
                     <label htmlFor="username"> Username </label>
                     <input
