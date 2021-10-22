@@ -5,8 +5,10 @@ import './App.css';
 import Homepage from './components/HomePage/Homepage';
 import SignupPage from './components/SignUpPage/SignUpPage';
 import LogInPage from './components/LogInPage/LogInPage';
+
 import Logout from './components/Logout/Logout';
 import PrivateRoute from './components/PrivateRoute';
+
 
 function App() {
   

@@ -2,9 +2,12 @@ import React , { useState } from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
 import { useHistory} from 'react-router';
+import { connect } from 'react-redux';
 
-import LogInSchema from '../../validation/LogInSchema';
+import { setUser } from '../../actions/UserActions';
+import schema from '../../validation/LogInSchema';
 import '../FormStyle.css';
+
 
 //INITIAL VALUES LOCATION
 const initialValue = {
@@ -25,7 +28,7 @@ const LogInPage = (props) => {
 
     const validate = (name, value) => {
         yup
-            .reach(LogInSchema, name)
+            .reach(schema, name)
             .validate(value)
             .then(() => setErrorsValues({ ...errorsValues, [name]: ""}))
             .catch((err) => setErrorsValues({...errorsValues, [name]: err.errors[0]}))
@@ -42,8 +45,16 @@ const LogInPage = (props) => {
             setErrorsValues({...errorsValues, empty: "Please Fill In All Field"});
         } else {
             console.log(formValues);
-        }
-        
+            axios.post('https://web46unit4buildweek.herokuapp.com/api/auth/login', formValues)
+                .then( (res) => {
+                    setUser(res.data);
+                    localStorage.setItem("token", res.data.token);
+                    history.push('/userpageHOLDER');
+                })
+                .catch( (err) => {
+                    console.log(err);
+                })
+        }  
     }
 
     return(
@@ -80,4 +91,10 @@ const LogInPage = (props) => {
     )
 };
 
-export default LogInPage;
+const mapStateToProps = (state) => {
+    return {
+        ...state,
+    };
+};
+
+export default connect(mapStateToProps, { setUser })(LogInPage);
